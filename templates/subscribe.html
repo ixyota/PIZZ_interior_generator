@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Оформление подписки - Pizz{% endblock %}
+
+{% block content %}
+<div class="subscribe-page">
+    <div class="container">
+        <div class="subscribe-grid">
+            <div class="plan-summary">
+                <p class="plan-label">Вы выбрали</p>
+                <h2 class="plan-name">{{ plan.name }}</h2>
+                <p class="plan-price">{{ plan.price }}</p>
+                <p class="plan-description">{{ plan.description }}</p>
+            </div>
+            <div class="subscribe-form-wrapper">
+                <h2>Данные карты</h2>
+                <form method="POST" action="{{ url_for('subscribe') }}">
+                    <input type="hidden" name="plan" value="{{ plan_slug }}">
+                    <div class="form-group">
+                        <label for="card_holder">Имя держателя карты</label>
+                        <input
+                            type="text"
+                            id="card_holder"
+                            name="card_holder"
+                            pattern="[A-Za-z ]+"
+                            inputmode="text"
+                            required
+                            oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '')"
+                            value="{{ form_data.get('card_holder') if form_data else '' }}"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="card_number">Номер карты</label>
+                        <input
+                            type="text"
+                            id="card_number"
+                            name="card_number"
+                            minlength="16"
+                            maxlength="16"
+                            pattern="\d{16}"
+                            inputmode="numeric"
+                            required
+                            oninput="this.value = this.value.replace(/\D/g, '')"
+                            value="{{ form_data.get('card_number') if form_data else '' }}"
+                        >
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry_month">Месяц</label>
+                            <input type="text" id="expiry_month" name="expiry_month" placeholder="MM" maxlength="2" required value="{{ form_data.get('expiry_month') if form_data else '' }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="expiry_year">Год</label>
+                            <input type="text" id="expiry_year" name="expiry_year" placeholder="YYYY" maxlength="4" required value="{{ form_data.get('expiry_year') if form_data else '' }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input
+                                type="password"
+                                id="cvv"
+                                name="cvv"
+                                minlength="3"
+                                maxlength="3"
+                                pattern="\d{3}"
+                                inputmode="numeric"
+                                required
+                                oninput="this.value = this.value.replace(/\D/g, '')"
+                                value="{{ form_data.get('cvv') if form_data else '' }}"
+                            >
+                        </div>
+                    </div>
+                    <button type="submit" class="btn_subscribe">Оформить</button>
+                </form>
+                <p class="subscribe-note">
+                    Нажимая «Оформить», вы соглашаетесь с обработкой персональных данных. Мы проверим введённую информацию и свяжемся с вами.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

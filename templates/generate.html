@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Генерация — Pizz{% endblock %}
+{% block content %}
+	<p class="subtitle">Загрузите чертёж помещения и получите красивый интерьер.</p>
+	{% if error %}
+		<div class="alert">{{ error }}</div>
+	{% endif %}
+	<form method="post" enctype="multipart/form-data" class="card">
+		<div class="field">
+			<label for="blueprint">Чертёж (изображение)</label>
+			<input type="file" id="blueprint" name="blueprint" accept="image/*" required>
+		</div>
+		<div class="field">
+			<label for="style">Стиль интерьера</label>
+			<select id="style" name="style" class="style-select">
+				<option value="minimalism">Минимализм</option>
+				<option value="modern">Модерн</option>
+				<option value="gothic">Готика</option>
+				<option value="shabby_chic">Шебби шик</option>
+				<option value="japanese">Японский</option>
+				<option value="scandinavian" selected>Скандинавский</option>
+			</select>
+		</div>
+		<div class="field">
+			<label for="prompt">Дополнительные пожелания</label>
+			<textarea id="prompt" name="prompt" rows="4" placeholder="Дополнительные детали, материалы, цвета..."></textarea>
+		</div>
+		<button type="submit" class="btn">Сгенерировать</button>
+	</form>
+	<div class="hint">Пример результата:</div>
+	<img src="/static/images/example_interior.png" alt="Пример интерьера" class="preview" />
+{% endblock %}
+
+

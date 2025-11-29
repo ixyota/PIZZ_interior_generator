@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Результат — Pizz{% endblock %}
+{% block content %}
+	<div class="grid">
+		<div>
+			<h3>Исходный чертёж</h3>
+			<img src="{{ source_url }}" class="image" />
+		</div>
+		<div>
+			<h3>Сгенерированный интерьер</h3>
+			<img src="{{ result_url }}" class="image" />
+		</div>
+	</div>
+	<a href="/generate" class="btn">Сгенерировать ещё</a>
+{% endblock %}
+
+

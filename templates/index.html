@@ -1,0 +1,382 @@
+{% extends "base.html" %}
+
+{% block title %}Вход - Pizz{% endblock %}
+
+{% block content %}
+    <!-- Автоматический слайдер -->
+    <section class="hero-slider">
+        <div class="slider-container">
+            <div class="slide active">
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <h2>Добро пожаловать в Pizz</h2>
+                        <p>Создавайте уникальные визуальные решения с помощью искусственного интеллекта</p>
+                        <button class="btn-primary">Узнать больше</button>
+                    </div>
+                    <div class="slide-image">
+                        <img src="/static/images/slider_1.png" alt="Slide 1">
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <h2>Инновационные технологии</h2>
+                        <p>Используйте передовые алгоритмы для создания потрясающих визуальных эффектов</p>
+                        <button class="btn-primary">Начать</button>
+                    </div>
+                    <div class="slide-image">
+                        <img src="/static/images/slider_2.png" alt="Slide 2">
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <h2>2D и 3D графики</h2>
+                        <p>Создавайте профессиональные изображения в различных форматах</p>
+                        <button class="btn-primary">Попробовать</button>
+                    </div>
+                    <div class="slide-image">
+                        <img src="/static/images/slider_3.png" alt="Slide 3">
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <h2>360° панорамы</h2>
+                        <p>Иммерсивные визуальные решения для ваших проектов</p>
+                        <button class="btn-primary">Изучить</button>
+                    </div>
+                    <div class="slide-image">
+                        <img src="/static/images/slider_4.png" alt="Slide 4">
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <h2>Профессиональный рендеринг</h2>
+                        <p>Высококачественные визуализации для любых задач</p>
+                        <button class="btn-primary">Создать</button>
+                    </div>
+                    <div class="slide-image">
+                        <img src="/static/images/slider_5.png" alt="Slide 5">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <button class="slider-btn prev" onclick="changeSlide(-1)">‹</button>
+            <div class="slider-dots">
+                <span class="dot active" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+                <span class="dot" onclick="goToSlide(3)"></span>
+                <span class="dot" onclick="goToSlide(4)"></span>
+                <span class="dot" onclick="goToSlide(5)"></span>
+            </div>
+            <button class="slider-btn next" onclick="changeSlide(1)">›</button>
+        </div>
+    </section>
+
+    <!-- Большой заголовок -->
+    <section class="main-title-section" id="plans">
+        <div class="container">
+            <h2 class="main-title">Преобразуйте план квартиры в реалистичный интерьер за считанные минуты</h2>
+            <p>Загрузите чертёж, эскиз или план комнаты — и получите реалистичный 3D-визуал современного интерьера с мебелью, материалами и освещением. Pizz превращает сухие линии плана в уютное, живое пространство, где вы сразу видите, как будет выглядеть ваш будущий дом.</p>
+        </div>
+    </section>
+
+    <!-- Блок карточек с кнопками -->
+    <section class="cards-section">
+        <div class="container">
+            <h2 class="main-title">Выбери свой план</h2>
+            <div class="cards-grid-new">
+                <div class="card-item card-1">
+                    <div class="card-content">
+                        <h3>Basic Set</h3>
+                        <p>2D 3D</p>
+                        <p>25$</p>
+                        <a href="/subscribe?plan=basic" class="btn-card">Выбрать</a>
+                    </div>
+                </div>
+                <div class="card-item card-2">
+                    <div class="card-content">
+                        <h3>Plus set</h3>
+                        <p>2D-план этажа/3D-план этажа/Виртуальный тур/Высокое качество</p>
+                        <p>45$</p>
+                        <a href="/subscribe?plan=plus" class="btn-card">Выбрать</a>
+                    </div>
+                </div>
+                <div class="card-item card-3">
+                    <div class="card-content">
+                        <h3>Render Set</h3>
+                        <p>2D-план этажа/3D-план этажа/Виртуальный тур/Высокое качество/Визуализации</p>
+                        <p>49$</p>
+                        <a href="/subscribe?plan=render" class="btn-card">Выбрать</a>
+                    </div>
+                </div>
+                <div class="card-item card-4">
+                    <div class="card-content">
+                        <h3>Max Set</h3>
+                        <p>2D-план этажа/3D-план этажа/Виртуальный тур/Высокое качество/Визуализации/Брендинг</p>
+                        <p>69$</p>
+                        <a href="/subscribe?plan=max" class="btn-card">Выбрать</a>
+                    </div>
+                </div>
+                <div class="card-item card-5">
+                    <div class="card-content">
+                        <h3>Pro Set</h3>
+                        <p>2D-план этажа/3D-план этажа/Виртуальный тур/Брендинг</p>
+                        <p>49$</p>
+                        <a href="/subscribe?plan=pro" class="btn-card">Выбрать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Раздел "Что мы создаём?" -->
+    <section class="what-we-create">
+        <div class="container">
+            <h2 class="section-title">Что мы создаём?</h2>
+            <div class="text-block">
+                <p>Мы специализируемся на создании визуального контента различных форматов. Наши технологии позволяют создавать качественные изображения, 3D модели, панорамные виды и профессиональные рендеры.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/static/images/2d_basic.png" alt="2D">
+                    <p class="gallery-caption">2D</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/static/images/3d_full_color.png" alt="3D">
+                    <p class="gallery-caption">3D</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/static/images/360_tour.png" alt="360">
+                    <p class="gallery-caption">360</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/static/images/renders.png" alt="Рендер">
+                    <p class="gallery-caption">Рендер</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Галерея, созданная с помощью ИИ -->
+    <section class="ai-gallery">
+        <div class="container">
+            <h2 class="section-title">Галерея, созданная с помощью ИИ</h2>
+            <div class="ai-slider">
+                <button class="ai-slider-btn prev" onclick="changeAISlide(-1)">←</button>
+                <div class="ai-slider-container">
+                    <div class="ai-slide active">
+                        <img src="/static/images/ai1.png" alt="AI Image 1">
+                    </div>
+                    <div class="ai-slide">
+                        <img src="/static/images/ai2.png" alt="AI Image 2">
+                    </div>
+                    <div class="ai-slide">
+                        <img src="/static/images/ai3.png" alt="AI Image 3">
+                    </div>
+                    <div class="ai-slide">
+                        <img src="/static/images/ai4.png" alt="AI Image 4">
+                    </div>
+                    <div class="ai-slide">
+                        <img src="/static/images/ai5.png" alt="AI Image 5">
+                    </div>
+                </div>
+                <button class="ai-slider-btn next" onclick="changeAISlide(1)">→</button>
+            </div>
+            <div class="ai-slider-nav">
+                <span class="ai-slide-counter">
+                    <span id="current-ai-slide">1</span> / <span id="total-ai-slides">3</span>
+                </span>
+            </div>
+            <div class="ai-try-btn">
+                <a href="/generate" target="_blank" style="text-decoration: none; display: inline-block;"><button class="btn-primary">Попробовать</button></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Раздел "Попробуйте стили интерьера и виды из окна" -->
+    <section class="floorplan-styles">
+        <div class="container">
+            <h2 class="section-title">Попробуйте стили интерьера вживую</h2>
+            <div class="floorplan-wrapper">
+                <iframe id="floorplan-frame"
+                    src="https://getfloorplan.com/widget/?id=ebded98e-61e8-4a8e-891c-d8f0f2a62f8c&type=living&style=american&lang=en">
+                </iframe>
+            </div>
+            <div class="styles-box">
+                <div class="style-option">
+                    <input type="radio" name="style" value="scandy" id="scandy">
+                    <label class="style-label" for="scandy">
+                        <img src="/static/images/scandy.svg" alt="Scandy"> Scandy
+                    </label>
+                </div>
+                <div class="style-option">
+                    <input type="radio" name="style" value="boho" id="boho">
+                    <label class="style-label" for="boho">
+                        <img src="/static/images/boho.svg" alt="Boho"> Boho
+                    </label>
+                </div>
+                <div class="style-option">
+                    <input type="radio" name="style" value="england" id="england">
+                    <label class="style-label" for="england">
+                        <img src="/static/images/england.svg" alt="England"> England
+                    </label>
+                </div>
+                <div class="style-option">
+                    <input type="radio" name="style" value="zero" id="zero">
+                    <label class="style-label" for="zero">
+                        <img src="/static/images/neutral.svg" alt="Neutral"> Neutral
+                    </label>
+                </div>
+                <div class="style-option">
+                    <input type="radio" name="style" value="modern" id="modern" checked>
+                    <label class="style-label" for="modern">
+                        <img src="/static/images/modern.svg" alt="Modern"> Modern
+                    </label>
+                </div>
+                <div class="style-option">
+                    <input type="radio" name="style" value="japandi" id="japandi">
+                    <label class="style-label" for="japandi">
+                        <img src="/static/images/japandi.svg" alt="Japandi"> Japandi
+                    </label>
+                </div>
+                <div class="style-option">
+                    <input type="radio" name="style" value="elegance" id="elegance">
+                    <label class="style-label" for="elegance">
+                        <img src="/static/images/elegance.svg" alt="Elegance"> Elegance
+                    </label>
+                </div>
+                <div class="style-option">
+                    <input type="radio" name="style" value="american" id="american">
+                    <label class="style-label" for="american">
+                        <img src="/static/images/american.svg" alt="American"> American
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Раздел "Хотите свой личный стиль?" -->
+    <section class="personal-style">
+        <div class="container">
+            <h2 class="section-title">Хотите свой личный стиль? Приступайте</h2>
+            <div class="style-cards">
+                <div class="style-card">
+                    <img src="/static/images/mixed_style.png" alt="Стиль 1">
+                    <div class="style-card-text">
+                        <h3>Смешанный стиль</h3>
+                        <p>Создание стиля с учётом ваших пожеланий. На основе библиотеки искусственного интеллекта.</p>
+                    </div>
+                </div>
+                <div class="style-card">
+                    <img src="/static/images/outside_area.png" alt="Стиль 2">
+                    <div class="style-card-text">
+                        <h3>Внешняя территория</h3>
+                        <p>Реализация внешнего вида и прилегающей территории — сада, бассейна и других элементов — для вас.</p>
+                    </div>
+                </div>
+                <div class="style-card">
+                    <img src="/static/images/window_view.png" alt="Стиль 3">
+                    <div class="style-card-text">
+                        <h3>Вид из окна</h3>
+                        <p>Выберите индивидуальный вид из окна. Более 200 вариантов.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-us-btn">
+                <a href="/contact" class="btn-primary" style="text-decoration: none; display: inline-block;">Напишите нам</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок "Создано с помощью" -->
+    <section class="created-by">
+        <div class="container">
+            <h2 class="section-title">Создано с помощью</h2>
+            <div class="creators">
+                <div class="creator-item">
+                    <img src="/static/images/s_cat1.png" alt="Орынхан Рахат">
+                    <p class="creator-name">Орынхан Рахат</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Часто задаваемые вопросы</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Как начать работу?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Просто зарегистрируйтесь на нашем сайте и выберите подходящий план подписки. После этого вы сможете сразу начать создавать визуальный контент.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Какие форматы поддерживаются?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Мы поддерживаем создание 2D изображений, 3D моделей, 360° панорам и профессиональных рендеров в различных форматах.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Можно ли использовать созданный контент в коммерческих целях?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Да, контент, созданный с помощью нашего сервиса, можно использовать в коммерческих целях в соответствии с выбранным планом подписки.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Как связаться с поддержкой?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Вы можете связаться с нашей службой поддержки через форму обратной связи или используя кнопку "Связаться с нами" в меню.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Кнопки прокрутки -->
+    <div class="scroll-buttons">
+        <button class="scroll-btn scroll-top" onclick="scrollToTop()" title="Вверх">↑</button>
+        <button class="scroll-btn scroll-chat" onclick="toggleChat()" title="Чат">💬</button>
+    </div>
+
+    <!-- Чат с ИИ-ассистентом -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3>ИИ-ассистент</h3>
+            <button class="chat-close" onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot">
+                <p>Здравствуйте! Чем могу помочь?</p>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="chatInput" placeholder="Введите сообщение..." onkeypress="handleChatKeyPress(event)">
+            <button onclick="sendMessage()">Отправить</button>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+
+{% endblock %}

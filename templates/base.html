@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Pizz{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/" style="text-decoration: none; color: inherit;"><h1>Pizz</h1></a>
+                </div>
+                <nav class="nav-menu">
+                    <a href="/" class="nav-link">О проекте</a>
+                    <a href="/#plans" class="nav-link">Планы и подписки</a>
+                    <a href="/contact" class="nav-link">Связаться с нами</a>
+                    {% if current_user.is_authenticated %}
+                        <span class="nav-link nav-user">Привет, {{ current_user.first_name }}!</span>
+                        <a href="/logout" class="nav-link btn-login">Выход</a>
+                    {% else %}
+                        <a href="/register" class="nav-link">Зарегистрироваться</a>
+                        <a href="/login" class="nav-link btn-login">Вход</a>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message flash-{{ category }}">
+                            {{ message }}
+                            <button class="flash-close" onclick="this.parentElement.remove()">×</button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pizz</h3>
+                    <p>Создавайте интерьер за считанные секунды</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="/">О проекте</a></li>
+                        <li><a href="/contact">Связаться с нами</a></li>
+                        <li><a href="/register">Регистрация</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p>Email: 9thiota@gmail.com</p>
+                    <p>Телефон: +7 (776) 210-65-64</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pizz. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
+
